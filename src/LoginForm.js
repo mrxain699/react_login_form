@@ -6,13 +6,22 @@ export const LoginForm = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState("");
+    
     // Call when form will submit
     const onSubmitForm = (e) => {
         e.preventDefault();
-        setMessage(`Login Successfully!`);
+        if(username !== "" && password !== ""){
+            setMessage(`Welcome, ${username}`);
+            setMessageType("success");
+        }
+        else{
+            setMessage(`All the fields are required`);
+            setMessageType("error");
+        }
         setUserName("");
         setPassword("");
-        setTimeout(()=>{setMessage("")}, 500); 
+        setTimeout(()=>{setMessage("")}, 5000); 
     };
     return (
         <div className="login_box">
@@ -20,9 +29,10 @@ export const LoginForm = () => {
             <img src={logo}  alt="logo" />
         </div>
         <form className="form" onSubmit={onSubmitForm}>
+            
             <div className="input_div">
             {message !== "" ? 
-            <div className="message">
+            <div className={`message message_${messageType}`}>
                 <span>{message}</span>
             </div> 
             : ""}

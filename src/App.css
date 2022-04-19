@@ -106,3 +106,13 @@ input::placeholder{
   display: flex;
   justify-content: space-between;
 }
+
+.message_success{
+  border-color:#00ff99;
+  color: #00ff99;
+}
+
+.message_error{
+  border-color:red;
+  color:red;
+}
